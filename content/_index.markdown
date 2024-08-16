@@ -1,10 +1,14 @@
 ---
 title: Home
+ 
 ---
 
-[<img src="https://simpleicons.org/icons/github.svg" style="max-width:15%;min-width:40px;float:right;" alt="Github repo" />](https://github.com/anushm55)
 
-# ANUSH M
+<h1 style="font-size: 4.2rem;text-align:center; padding:2% ">
+
+ ANUSH M
+
+</h1>
 
 ## Check these out
 

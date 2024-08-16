@@ -1,5 +1,13 @@
+@font-face {
+  font-family: InterVariable;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/Inter-Light.woff2") format("woff2");
+}
+
 body {
-  font-family: Optima, Candara, Calibri, Arial, sans-serif;
+  font-family:  InterVariable/*Optima, Candara, Calibri, Arial, sans-serif*/;
 }
 code {
   font-family: "Lucida Console", Monaco, monospace;
