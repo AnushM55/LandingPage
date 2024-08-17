@@ -6,13 +6,18 @@ body {
 }
 
 /* header and footer areas */
-.menu { padding: 0; }
+.menu { padding: 10;
+}
 .menu li { display: inline-block; }
 .article-meta, .menu a {
   text-decoration: none;
+
   background: #eee;
   padding: 5px;
   border-radius: 5px;
+}
+.article-meta {
+  margin-top : 10px;
 }
 .menu, .article-meta, footer { text-align: center; }
 .title { font-size: 1.3em; }
