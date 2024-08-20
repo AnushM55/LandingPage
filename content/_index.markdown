@@ -4,7 +4,7 @@ title: Home
 ---
 
 
-<h1 style="font-size: 4.2rem;text-align:center; padding:2% ">
+<h1 style="font-size: 2.4rem; text-align:center; padding:2% ">
 
  ANUSH M
 
