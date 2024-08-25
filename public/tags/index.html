@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=5785&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=9999&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Tags - A minimal Hugo website</title>
-    <meta property="og:title" content="Tags - A minimal Hugo website">
+    <title>Tags - Anush M - Landing page</title>
+    <meta property="og:title" content="Tags - Anush M - Landing page">
     
     <meta name="twitter:card" content="summary">
     
@@ -18,7 +18,7 @@
     
 
     
-    <link href="/tags/index.xml" rel="alternate" type="application/rss+xml" title="A minimal Hugo website">
+    <link href="/tags/index.xml" rel="alternate" type="application/rss+xml" title="Anush M - Landing page">
     
 
     
@@ -34,16 +34,59 @@
   
   
   
-  <body class=" tags">
+  <body  class=" tags">
     <nav class="nav-top small">
-    <div class="menu"><span><a href="/">Home</a></span>
+    <div id="mainContent" class="menu"><span><a href="/">Home</a></span>
       <span><a href="/about/">About</a></span>
       <span><a href="/categories/">Categories</a></span>
       <span class="active"><a href="/tags/">Tags</a></span>
       <span><a href="/index.xml">Subscribe</a></span>
       
+<button class="menu" id="darkmodebutton"><label for="dark-mode" id="checkbox-description"></label></button><input id="dark-mode" type="checkbox"
+name="dark-mode"/>
+
     </div>
     </nav>
+ <script>
+         var body = document.body
+         var toggle = document.querySelector('input[name=dark-mode]');
+
+        toggle.addEventListener("change", function(event) {
+
+                if(toggle.checked){
+                
+                this.classList.add('js-toggle--checked');
+                        document.getElementById('checkbox-description').textContent="light";
+		}else{
+                        document.getElementById('checkbox-description').textContent="dark";
+                        
+                this.classList.remove('js-toggle--checked');
+
+                }
+                
+		if (this.classList.contains('js-toggle--checked')) {
+			body.classList.add('dark-theme');
+			
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			body.classList.remove('dark-theme');
+			setTimeout(function() {
+				localStorage.removeItem('darkMode');
+			}, 100);
+		}
+	})
+
+	
+	if (localStorage.getItem('darkMode')) {
+                body.classList.add('dark-theme');
+                toggle.checked = true;
+                        document.getElementById('checkbox-description').textContent="light";
+	}else{
+                toggle.checked = false;
+                        document.getElementById('checkbox-description').textContent="dark";
+        }
+
+</script>
 
 
 <h1>Tags</h1>

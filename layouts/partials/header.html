@@ -48,9 +48,9 @@
   {{ $section := (replaceRE "^/([^/]+)/.*" "$1" .RelPermalink) }}
   {{ if eq $section "/" }}{{ $section = "" }}{{ end }}
   {{ $.Scratch.Set "section" $section }}
-  <body class="{{ if .IsPage }}single{{ end }}{{ with $section }} {{ . }}{{ end }}{{ if (in .Content `<div class="footnotes"`) }} has-sidenotes{{ end }}{{ with .Params.page_class }} {{ . }}{{ end }}">
+  <body  class="{{ if .IsPage }}single{{ end }}{{ with $section }} {{ . }}{{ end }}{{ if (in .Content `<div class="footnotes"`) }} has-sidenotes{{ end }}{{ with .Params.page_class }} {{ . }}{{ end }}">
     <nav class="nav-top small">
-    <div class="menu">
+    <div id="mainContent" class="menu">
       {{- $active := "" -}}
       {{- $menu := (default .Site.Menus.main (index .Site.Menus $section)) -}}
       {{- range $menu -}}
@@ -66,5 +66,48 @@
       {{- $mclass = delimit $mclass " " -}}
       <span{{ with $mclass }} class="{{ . }}"{{ end }}><a href="{{ relURL .URL }}">{{ .Name }}</a></span>
       {{ end }}
+<button class="menu" id="darkmodebutton"><label for="dark-mode" id="checkbox-description"></label></button><input id="dark-mode" type="checkbox"
+name="dark-mode"/>
+
     </div>
     </nav>
+ <script>
+         var body = document.body
+         var toggle = document.querySelector('input[name=dark-mode]');
+
+        toggle.addEventListener("change", function(event) {
+
+                if(toggle.checked){
+                
+                this.classList.add('js-toggle--checked');
+                        document.getElementById('checkbox-description').textContent="light";
+		}else{
+                        document.getElementById('checkbox-description').textContent="dark";
+                        
+                this.classList.remove('js-toggle--checked');
+
+                }
+                //If dark mode is selected
+		if (this.classList.contains('js-toggle--checked')) {
+			body.classList.add('dark-theme');
+			//Save user preference in storage
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			body.classList.remove('dark-theme');
+			setTimeout(function() {
+				localStorage.removeItem('darkMode');
+			}, 100);
+		}
+	})
+
+	//Check Storage. Keep user preference on page reload
+	if (localStorage.getItem('darkMode')) {
+                body.classList.add('dark-theme');
+                toggle.checked = true;
+                        document.getElementById('checkbox-description').textContent="light";
+	}else{
+                toggle.checked = false;
+                        document.getElementById('checkbox-description').textContent="dark";
+        }
+
+</script>
