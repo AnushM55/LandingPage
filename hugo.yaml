@@ -21,9 +21,6 @@ menu:
     - name: Categories
       url: "categories/"
       weight: 3
-    - name: Tags
-      url: "tags/"
-      weight: 4
     - name: RSS
       url: "index.xml"
 
