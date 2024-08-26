@@ -7,7 +7,7 @@ body.dark-theme main *{
 body.dark-theme .article-meta {
         color : rgb(45, 45, 45);
 }
-body.dark-theme a:link { 
+body.dark-theme a:link,a:visited { 
         color : #FD3F92
 }
 body {
