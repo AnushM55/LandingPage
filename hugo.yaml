@@ -24,7 +24,7 @@ menu:
     - name: Tags
       url: "tags/"
       weight: 4
-    - name: Subscribe
+    - name: RSS
       url: "index.xml"
 
 params:
