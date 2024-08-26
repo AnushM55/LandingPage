@@ -51,6 +51,10 @@
   {{ $.Scratch.Set "section" $section }}
   <body  class="{{ if .IsPage }}single{{ end }}{{ with $section }} {{ . }}{{ end }}{{ if (in .Content `<div class="footnotes"`) }} has-sidenotes{{ end }}{{ with .Params.page_class }} {{ . }}{{ end }}">
     <nav class="nav-top small">
+<div id="darkmodebutton" class=""
+style="margin-top:10px;background:#eee;width:wrap; display:inline-block"><label
+for="dark-mode" id="checkbox-description"></label></button><input
+id="dark-mode" type="checkbox" name="dark-mode"/></div>
     <div id="mainContent" class="menu">
       {{- $active := "" -}}
       {{- $menu := (default .Site.Menus.main (index .Site.Menus $section)) -}}
@@ -67,8 +71,6 @@
       {{- $mclass = delimit $mclass " " -}}
       <span{{ with $mclass }} class="{{ . }}"{{ end }}><a href="{{ relURL .URL }}">{{ .Name }}</a></span>
       {{ end }}
-<button class="menu" id="darkmodebutton"><label for="dark-mode" id="checkbox-description"></label></button><input id="dark-mode" type="checkbox"
-name="dark-mode"/>
 
     </div>
     </nav>
