@@ -1,3 +1,9 @@
+---
+title: message to the reader
+date: '2024-10-05'
+categories:
+  - Musings
+---
 You , the reader and I are closer than ever before in human history.
 Only  constraints  are your internet speed and the render time of this site.
 What we know of each other is more or less the same. We share the experience of being human.
