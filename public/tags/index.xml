@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Anush M - Landing page</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>http://localhost:8759/tags/</link>
     <description>Recent content in Tags on Anush M - Landing page</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 16 Aug 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:8759/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Markdown</title>
-      <link>http://localhost:1313/tags/markdown/</link>
+      <link>http://localhost:8759/tags/markdown/</link>
       <pubDate>Fri, 16 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/markdown/</guid>
+      <guid>http://localhost:8759/tags/markdown/</guid>
       <description></description>
     </item>
   </channel>
