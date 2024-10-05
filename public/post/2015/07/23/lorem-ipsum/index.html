@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8759&amp;path=livereload" data-no-instant defer></script>
 <link rel="icon" href="data:,">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,10 +39,10 @@
   <body  class="single post">
     <nav class="nav-top small">
     <div id="mainContent" class="menu">
-<span id="darkmodebutton" class="menu"
+<span id="lightmodebutton" class="menu"
 style="margin:10px;background:#eee;width:wrap; display:inline-block"><label
-for="dark-mode" id="checkbox-description"></label></button><input
-id="dark-mode" type="checkbox" name="dark-mode"/></span><span class="active"><a href="/">Home</a></span>
+for="light-mode" id="checkbox-description"></label></button><input
+id="light-mode" type="checkbox" name="light-mode"/></span><span class="active"><a href="/">Home</a></span>
       <span><a href="/about/">About</a></span>
       <span><a href="/categories/">Categories</a></span>
       <span><a href="/index.xml">RSS</a></span>
@@ -52,41 +52,41 @@ id="dark-mode" type="checkbox" name="dark-mode"/></span><span class="active"><a 
     </nav>
  <script>
          var body = document.body
-         var toggle = document.querySelector('input[name=dark-mode]');
+         var toggle = document.querySelector('input[name=light-mode]');
 
         toggle.addEventListener("change", function(event) {
 
                 if(toggle.checked){
                 
                 this.classList.add('js-toggle--checked');
-                        document.getElementById('checkbox-description').textContent="light";
-		}else{
                         document.getElementById('checkbox-description').textContent="dark";
+		}else{
+                        document.getElementById('checkbox-description').textContent="light";
                         
                 this.classList.remove('js-toggle--checked');
 
                 }
                 
 		if (this.classList.contains('js-toggle--checked')) {
-			body.classList.add('dark-theme');
+			body.classList.add('light-theme');
 			
-			localStorage.setItem('darkMode', 'true');
+			localStorage.setItem('lightMode', 'true');
 		} else {
-			body.classList.remove('dark-theme');
+			body.classList.remove('light-theme');
 			setTimeout(function() {
-				localStorage.removeItem('darkMode');
+				localStorage.removeItem('lightMode');
 			}, 100);
 		}
 	})
 
 	
-	if (localStorage.getItem('darkMode')) {
-                body.classList.add('dark-theme');
+	if (localStorage.getItem('lightMode')) {
+                body.classList.add('light-theme');
                 toggle.checked = true;
-                        document.getElementById('checkbox-description').textContent="light";
+                        document.getElementById('checkbox-description').textContent="dark";
 	}else{
                 toggle.checked = false;
-                        document.getElementById('checkbox-description').textContent="dark";
+                        document.getElementById('checkbox-description').textContent="light";
         }
 
 </script>
