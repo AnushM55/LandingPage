@@ -1,4 +1,7 @@
   <footer>
+    {{if not .IsHome}}
+    <a href="{{ .Site.BaseURL }}"><u>home</u></a> 
+    {{end}}
   </footer>
   </body>
 </html>
