@@ -1,117 +1,143 @@
 body.light-theme,
-body.light-theme main *{
-
+body.light-theme main * {
     background: white;
-    color: rgb(45,45,45);
+    color: rgb(45, 45, 45);
 }
 body.light-theme .article-meta {
-        color :rgb(45,45,45);
-        background:#eee
+    color: rgb(45, 45, 45);
+    background: #eee;
 }
 body.light-theme a {
-  color:blue
+    color: blue;
 }
 a {
-  color: #ff007f
-
+    color: #ff007f;
 }
 
 body {
-  max-width: 800px;
-  margin: auto;
-  padding: 1em;
-  line-height: 1.5;
+    max-width: 800px;
+    margin: auto;
+    padding: 1em;
+    line-height: 1.5;
 
-  background: rgb(45,45,45);
-  color: white;
+    background: rgb(45, 45, 45);
+    color: white;
 }
 
 /* header and footer areas */
-.menu { padding-left: 10;
+.menu {
+    padding-left: 10;
 
-        display:block;
-
+    display: block;
 }
-.menu li { display: inline-block; }
-
-.article-meta, .menu a {
-  text-decoration: none;
-  background:#eee;
-  padding: 5px;
-  border-radius: 5px;
+.menu li {
+    display: inline-block;
 }
-.menu button{
 
-  text-decoration: none;
-  background: rgb(45,45,45);
-  border-radius: 5px;
+.article-meta,
+.menu a {
+    text-decoration: none;
+    background: #eee;
+    padding: 5px;
+    border-radius: 5px;
 }
-button .light-theme  {
-        color:rgb(45,45,45)
+.menu button {
+    text-decoration: none;
+    background: rgb(45, 45, 45);
+    border-radius: 5px;
+}
+button .light-theme {
+    color: rgb(45, 45, 45);
 }
 .article-meta {
-  margin-top : 10px;
-  color:rgb(45,45,45)
+    margin-top: 10px;
+    color: rgb(45, 45, 45);
 }
-.menu, .article-meta, footer { text-align: center; }
-.title { font-size: 1.3em; }
-footer a { text-decoration: none; }
+.menu,
+.article-meta,
 footer {
-        padding-top : 20px
+    text-align: center;
 }
+.title {
+    font-size: 1.3em;
+}
+footer a {
+    text-decoration: none;
+}
+footer {
+    padding-top: 20px;
+}
+
 hr {
-  border-style: dashed;
-  color: rgb(45,45,45);
+    border-style: dashed;
+    color: rgb(45, 45, 45);
 }
 
 /* code */
 pre {
-  border: 1px solid rgb(45,45,45);
-  box-shadow: 5px 5px 5px rgb(45,45,45);
-  padding: 1em;
-  overflow-x: auto;
+    border: 1px solid rgb(45, 45, 45);
+    box-shadow: 5px 5px 5px rgb(45, 45, 45);
+    padding: 1em;
+    overflow-x: auto;
 }
-code { background: rgb(45,45,45); }
-pre code { background: none; }
+code {
+    background: rgb(45, 45, 45);
+}
+pre code {
+    background: none;
+}
 
 /* misc elements */
-img, iframe, video { max-width: 100%; }
-main { hyphens: auto; }
+img,
+iframe,
+video {
+    max-width: 100%;
+}
+main {
+    hyphens: auto;
+}
 blockquote {
-  background: rgb(45,45,45);
-  border-left: 5px solid #ccc;
-  padding: 3px 1em 3px;
+    background: rgb(45, 45, 45);
+    border-left: 5px solid #ccc;
+    padding: 3px 1em 3px;
 }
 
 table {
-  margin: auto;
-  border-top: 1px solid #666;
-  border-bottom: 1px solid #666;
+    margin: auto;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
 }
-table thead th { border-bottom: 1px solid rgb(45,45,45); }
-th, td { padding: 5px; }
-thead, tfoot, tr:nth-child(even) { background: rgb(45,45,45); }
-
-
-input[type=checkbox]{
-        display:none;
+table thead th {
+    border-bottom: 1px solid rgb(45, 45, 45);
 }
-.js-toggle--checked{
+th,
+td {
+    padding: 5px;
+}
+thead,
+tfoot,
+tr:nth-child(even) {
+    background: rgb(45, 45, 45);
+}
 
+input[type="checkbox"] {
+    display: none;
+}
+.js-toggle--checked {
 }
 #checkbox-description {
-  text-decoration: none;
-  background: white;
-  border: 1px solid white;
-  padding: 2px;
+    text-decoration: none;
+    background: white;
+    border: 1px solid white;
+    padding: 2px;
 
-color : blue;
+    color: blue;
 }
 .body.light-theme #checkbox-description {
-  color : #ff007f
+    color: #ff007f;
 }
 
-body.light-theme #checkbox-description { 
-        color:#ff007f;
-        background : rgb(45,45,45);
+body.light-theme #checkbox-description {
+    color: #ff007f;
+    background: rgb(45, 45, 45);
 }
