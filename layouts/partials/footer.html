@@ -1,7 +1,15 @@
   <footer>
     {{if not .IsHome}}
-    <a href="/"><u>home</u></a> 
+    <a href="/"><u>home</u></a>
+    {{ .Site.Params.Lastmod }}
+
+    <br>
+    <p id="copyright">
+  {{ .Site.Copyright }}
+    </p>
     {{end}}
+
   </footer>
+
   </body>
 </html>
