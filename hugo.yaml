@@ -5,7 +5,7 @@ googleAnalytics: ""
 disqusShortname: ""
 ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
 footnotereturnlinkcontents: "↩"
-
+copyright: "© 2024 Anush M"
 permalinks:
   note: "/note/:year/:month/:day/:slug/"
   post: "/post/:year/:month/:day/:slug/"
