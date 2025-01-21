@@ -1,11 +1,8 @@
 ---
-type: "external-redirect"
-title: "Making Megadesk Smart"
+title: "LinkBandaid"
 tags:
   - Markdown
 ---
 
-# This is my first post
+A tool to fix broken links in your github repo
 
-
-A sample markdown post to start 
