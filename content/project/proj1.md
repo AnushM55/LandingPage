@@ -1,6 +1,5 @@
 ---
 type: "external-redirect"
-url: "https://blog.roboflow.com/security-camera-monitoring/"
 title: "Making Megadesk Smart"
 tags:
   - Markdown
