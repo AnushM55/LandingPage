@@ -23,6 +23,7 @@ For each protest event, the project records protester demands, government respon
 ## Data transformation
 
 - The fetched data source had 20+ columns . I transformed the big table into five different tables as a star schema.
+
 - Defined relations between the five tables. Removed duplicates wherever necessary 
 
 ## Data visualization
@@ -41,4 +42,4 @@ For each protest event, the project records protester demands, government respon
 
 # Project source
 
-- You can check out the pbix files [here](https://github.com/AnushM55/MassMobilisationInsights)
+- You can check out the project files [here](https://github.com/AnushM55/MassMobilisationInsights)
