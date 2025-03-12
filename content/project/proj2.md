@@ -42,4 +42,4 @@ For each protest event, the project records protester demands, government respon
 
 # Project source
 
-- You can check out the project files [here](https://github.com/AnushM55/MassMobilisationInsights)
+- You can check out the project files [here](https://github.com/AnushM55/MassMobilizationInsights)
