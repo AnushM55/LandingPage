@@ -71,7 +71,6 @@ id="light-mode" type="checkbox" name="light-mode"/></span>
       {{- $mclass = delimit $mclass " " -}}
       <span{{ with $mclass }} class="{{ . }}"{{ end }}><a href="{{ relURL .URL }}">{{ .Name }}</a></span>
       {{ end }}
-
     </div>
     </nav>
  <script>
