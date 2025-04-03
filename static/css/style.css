@@ -63,27 +63,49 @@ a:hover {
     text-decoration: underline; /* Add underline on hover */
 }
 
-/* Header, Footer, Menu */
-header, footer {
-    padding: 1em 0; /* Add vertical padding */
-    text-align: center;
+/* Header, Navigation */
+.nav-top {
+    display: flex;
+    justify-content: space-between; /* Space out logo/title and nav links */
+    align-items: center;
+    padding: 0.5em 1em; /* Adjust padding */
+    position: sticky; /* Keep sticky */
+    top: 0;
+    background-color: #212529; /* Ensure background for sticky nav */
+    z-index: 1000; /* Ensure nav stays on top */
+    transition: top 0.3s; /* Keep scroll transition */
+}
+body.light-theme .nav-top {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6; /* Add subtle border in light mode */
 }
 
-.menu {
-    padding: 0; /* Remove default padding */
-    margin: 1em 0; /* Add vertical margin */
-    list-style: none; /* Remove bullets */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center items */
-    gap: 15px; /* Add space between items */
-    align-items: center; /* Vertically align items */
+/* Hamburger Button */
+.hamburger-button {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    font-size: 1.8em; /* Larger icon */
+    cursor: pointer;
+    color: #dee2e6; /* Match dark theme text */
+    padding: 0.2em 0.5em;
+}
+body.light-theme .hamburger-button {
+    color: #343a40; /* Match light theme text */
 }
 
-.menu li {
-    display: inline-block; /* Keep inline-block for structure */
+/* Navigation Links Container */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Default gap for desktop */
 }
 
-.menu a {
+/* Individual Menu Items (replaces .menu li and direct .menu a styling) */
+.menu-item {
+    display: inline-block; /* Maintain inline-block structure */
+}
+.menu-item a {
     text-decoration: none;
     padding: 8px 12px; /* Increase padding */
     border-radius: 5px;
@@ -95,40 +117,70 @@ header, footer {
     background-color: #495057; /* Slightly lighter on hover */
     text-decoration: none; /* Keep no underline on hover */
 }
-body.light-theme .menu a {
+body.light-theme .menu-item a {
     background-color: #e9ecef; /* Light background for light theme */
     color: #343a40; /* Dark text */
 }
-body.light-theme .menu a:hover {
+body.light-theme .menu-item a:hover {
     background-color: #ced4da; /* Darker on hover */
 }
 
-/* Theme Toggle Button */
-.menu button {
-    background: none; /* Remove background */
-    border: 1px solid #6c757d; /* Add border */
-    color: #dee2e6; /* Match text color */
-    padding: 6px 10px; /* Adjust padding */
-    border-radius: 5px;
+/* Theme Toggle Styles (adjusting previous button/label styles) */
+.theme-toggle label { /* Style the label like a button */
+    display: inline-block;
+    text-decoration: none;
+    background: #343a40;
+    border: 1px solid #6c757d;
+    padding: 6px 10px;
+    color: #dee2e6;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transition */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: 5px;
+    font-size: 0.9em; /* Match mobile menu font size */
 }
-.menu button:hover {
+.theme-toggle label:hover {
     background-color: #495057;
     color: #f8f9fa;
 }
-body.light-theme .menu button {
-    border: 1px solid #adb5bd;
+body.light-theme .theme-toggle label {
+    background: #e9ecef;
     color: #343a40;
+    border: 1px solid #adb5bd;
 }
-body.light-theme .menu button:hover {
-    background-color: #e9ecef;
+body.light-theme .theme-toggle label:hover {
+    background-color: #ced4da;
     color: #212529;
 }
-/* Remove redundant rule */
-/* button .light-theme { color: rgb(45, 45, 45); } */
+.theme-toggle input[type="checkbox"] { /* Keep checkbox hidden */
+    display: none;
+}
 
-/* Article Meta */
+/* Footer */
+footer { /* Keep footer styles */
+    padding: 1em 0;
+    text-align: center;
+    margin-top: 3em;
+    padding-top: 1.5em;
+    border-top: 1px solid #495057;
+    font-size: 0.9em;
+    color: #adb5bd;
+}
+body.light-theme footer {
+    border-top: 1px solid #dee2e6;
+    color: #6c757d;
+}
+footer a {
+    color: inherit;
+}
+footer a:hover {
+    color: #bb86fc;
+}
+body.light-theme footer a:hover {
+    color: #007bff;
+}
+
+
+/* Article Meta */ /* Keep article meta styles */
 .article-meta {
     margin: 1.5em 0; /* Increase vertical margin */
     padding: 10px 15px; /* Increase padding */
@@ -289,27 +341,93 @@ input[type="checkbox"] {
     }
 }
 
-/* Mobile Menu Adjustments - Reduce Spacing */
-@media (max-width: 600px) {
-    .menu {
-        gap: 8px; /* Reduce gap between items */
-        flex-wrap: wrap; /* Allow items to wrap if needed, though unlikely with reduced spacing */
-        justify-content: center; /* Keep items centered */
+/* Desktop Navigation Alignment */
+@media (min-width: 769px) {
+    .nav-top {
+        justify-content: center; /* Center the nav links container */
     }
-    .menu a {
-        padding: 6px 8px; /* Reduce padding inside links */
-        font-size: 0.9em; /* Slightly smaller font */
+}
+/* Comprehensive Mobile Responsiveness */
+@media (max-width: 768px) { /* Use a common breakpoint */
+
+    /* Adjust body padding */
+    body {
+        padding: 1em;
+        margin: 20px auto;
     }
-    .menu button, #checkbox-description {
-        padding: 4px 6px; /* Reduce padding for buttons */
-        font-size: 0.9em; /* Slightly smaller font */
+
+    /* Show Hamburger, Hide Links */
+    .hamburger-button {
+        display: block; /* Show hamburger */
     }
-    #lightmodebutton {
-         margin: 5px; /* Reduce margin around the toggle */
+    .nav-links {
+        display: none; /* Hide links container by default */
+        position: absolute;
+        top: 100%; /* Position below the nav bar */
+        left: 0;
+        right: 0;
+        background-color: #2c3034; /* Dark background for dropdown */
+        flex-direction: column;
+        align-items: center;
+        padding: 1em 0;
+        border-bottom: 1px solid #495057;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        gap: 10px; /* Spacing for vertical items */
+    }
+    body.light-theme .nav-links {
+        background-color: #f8f9fa; /* Light background */
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    /* Show Links when Active */
+    .nav-links.active {
+        display: flex; /* Show when active class is added by JS */
+    }
+
+    /* Style menu items for vertical layout */
+    .menu-item {
+        width: 100%;
+        text-align: center;
+    }
+    .menu-item a {
+        display: block; /* Make link take full width */
+        padding: 10px 15px; /* Adjust padding for vertical */
+        background-color: transparent; /* Remove individual backgrounds */
+        color: #dee2e6; /* Ensure text color */
+    }
+    body.light-theme .menu-item a {
+        background-color: transparent;
+        color: #343a40;
+    }
+    .menu-item a:hover {
+        background-color: #495057; /* Hover background for full item */
+    }
+    body.light-theme .menu-item a:hover {
+        background-color: #e9ecef;
+    }
+
+    /* Adjust theme toggle position/margin */
+    .theme-toggle {
+         margin-top: 10px; /* Add space above toggle */
+         width: auto; /* Don't force full width */
     }
 
     /* Adjust title size for mobile */
     .title {
-        font-size: 1.4em; /* Reduce font size from 1.8em */
+        font-size: 1.5em; /* Adjust title size */
     }
+
+    /* Adjust general padding/margins for other elements if needed */
+    pre, blockquote, table {
+        margin: 1em 0;
+    }
+    th, td {
+        padding: 8px 10px;
+    }
+
+    /* Adjust heading sizes for mobile */
+    h1 { font-size: 1.6em; } /* Base h1 might be ~2em */
+    h2 { font-size: 1.4em; } /* Base h2 might be ~1.5em */
+    h3 { font-size: 1.2em; } /* Base h3 might be ~1.17em */
+    /* Add h4, h5, h6 if needed */
 }
