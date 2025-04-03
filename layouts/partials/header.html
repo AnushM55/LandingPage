@@ -49,33 +49,38 @@
   {{ $section := (replaceRE "^/([^/]+)/.*" "$1" .RelPermalink) }}
   {{ if eq $section "/" }}{{ $section = "" }}{{ end }}
   {{ $.Scratch.Set "section" $section }}
-  <body  class="{{ if .IsPage }}single{{ end }}{{ with $section }} {{ . }}{{ end }}{{ if (in .Content `<div class="footnotes"`) }} has-sidenotes{{ end }}{{ with .Params.page_class }} {{ . }}{{ end }}">
+  <body class="{{ if .IsPage }}single{{ end }}{{ with $section }} {{ . }}{{ end }}{{ if (in .Content `<div class="footnotes"`) }} has-sidenotes{{ end }}{{ with .Params.page_class }} {{ . }}{{ end }}">
     <nav class="nav-top small">
-    <div id="mainContent" class="menu">
-<span id="lightmodebutton" class="menu"
-style="margin:10px;background:#eee;width:wrap; display:inline-block"><label
-for="light-mode" id="checkbox-description"></label></button><input
-id="light-mode" type="checkbox" name="light-mode"/></span>
-      {{- $active := "" -}}
-      {{- $menu := (default .Site.Menus.main (index .Site.Menus $section)) -}}
-      {{- range $menu -}}
-      {{- if and (hasPrefix $.Page.RelPermalink (relURL .URL)) (gt (len .URL) (len $active)) -}}
-      {{- $active = .URL -}}
-      {{- end -}}
-      {{- end -}}
-      {{ range $menu }}
-      {{- $mclass := or .Params.class slice -}}
-      {{- if eq $active .URL -}}
-      {{- $mclass = append (slice "active") $mclass -}}
-      {{- end -}}
-      {{- $mclass = delimit $mclass " " -}}
-      <span{{ with $mclass }} class="{{ . }}"{{ end }}><a href="{{ relURL .URL }}">{{ .Name }}</a></span>
-      {{ end }}
-    </div>
+      <button class="hamburger-button" aria-label="Toggle Navigation">☰</button>
+      <div class="nav-links">
+        <span id="lightmodebutton" class="menu-item theme-toggle" style="/* style moved to css */">
+          <label for="light-mode" id="checkbox-description"></label>
+          <input id="light-mode" type="checkbox" name="light-mode"/>
+        </span>
+        {{- $active := "" -}}
+        {{- $menu := (default .Site.Menus.main (index .Site.Menus $section)) -}}
+        {{- range $menu -}}
+        {{- if and (hasPrefix $.Page.RelPermalink (relURL .URL)) (gt (len .URL) (len $active)) -}}
+        {{- $active = .URL -}}
+        {{- end -}}
+        {{- end -}}
+        {{ range $menu }}
+        {{- $mclass := or .Params.class slice -}}
+        {{- if eq $active .URL -}}
+        {{- $mclass = append (slice "active") $mclass -}}
+        {{- end -}}
+        {{- $mclass = delimit $mclass " " -}}
+        <span class="menu-item{{ with $mclass }} {{ . }}{{ end }}">
+          <a href="{{ relURL .URL }}">{{ .Name }}</a>
+        </span>
+        {{ end }}
+      </div>
     </nav>
- <script>
-         var body = document.body
-         var toggle = document.querySelector('input[name=light-mode]');
+
+    <script>
+      // Theme toggle script (existing)
+      var body = document.body;
+      var toggle = document.querySelector('input[name=light-mode]');
 
         toggle.addEventListener("change", function(event) {
 
@@ -121,6 +126,34 @@ var currentScrollPos = window.pageYOffset;
     document.getElementsByTagName("nav")[0].style.top = "-50px";
   }
   prevScrollpos = currentScrollPos;
-}
+};
+
+// Hamburger Menu Toggle Script (new)
+const hamburger = document.querySelector('.hamburger-button');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  // Optional: Change hamburger icon to 'X' when active
+  if (navLinks.classList.contains('active')) {
+    hamburger.textContent = '✕';
+    hamburger.setAttribute('aria-expanded', 'true');
+  } else {
+    hamburger.textContent = '☰';
+     hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// Close menu if user clicks outside of it (optional enhancement)
+document.addEventListener('click', function(event) {
+  const isClickInsideNav = navLinks.contains(event.target);
+  const isClickOnHamburger = hamburger.contains(event.target);
+
+  if (!isClickInsideNav && !isClickOnHamburger && navLinks.classList.contains('active')) {
+    navLinks.classList.remove('active');
+    hamburger.textContent = '☰';
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
 
 </script>
