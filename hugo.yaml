@@ -15,12 +15,15 @@ menu:
     - name: Home
       url: ""
       weight: 1
+    - name: Projects # Added Projects item
+      url: "project/"
+      weight: 2
     - name: About
       url: "about/"
-      weight: 2
+      weight: 3 # Incremented weight
     - name: Categories
       url: "categories/"
-      weight: 3
+      weight: 4 # Incremented weight
     - name: RSS
       url: "index.xml"
 

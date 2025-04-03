@@ -288,3 +288,28 @@ input[type="checkbox"] {
         max-width: 1000px;
     }
 }
+
+/* Mobile Menu Adjustments - Reduce Spacing */
+@media (max-width: 600px) {
+    .menu {
+        gap: 8px; /* Reduce gap between items */
+        flex-wrap: wrap; /* Allow items to wrap if needed, though unlikely with reduced spacing */
+        justify-content: center; /* Keep items centered */
+    }
+    .menu a {
+        padding: 6px 8px; /* Reduce padding inside links */
+        font-size: 0.9em; /* Slightly smaller font */
+    }
+    .menu button, #checkbox-description {
+        padding: 4px 6px; /* Reduce padding for buttons */
+        font-size: 0.9em; /* Slightly smaller font */
+    }
+    #lightmodebutton {
+         margin: 5px; /* Reduce margin around the toggle */
+    }
+
+    /* Adjust title size for mobile */
+    .title {
+        font-size: 1.4em; /* Reduce font size from 1.8em */
+    }
+}
