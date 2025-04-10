@@ -11,5 +11,26 @@
 
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/animejs@4.0.0/lib/anime.iife.min.js"></script>
+  <script>
+    // Wait for the DOM and Anime.js to load
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.querySelector('input[name=light-mode]');
+      const { animate, stagger } = anime; // Destructure Anime.js functions
+
+      if (themeToggle) {
+        themeToggle.addEventListener('change', () => {
+          // Animate menu items when the theme toggle changes
+          animate('.nav-links .menu-item', {
+            opacity: [0, 1],
+            translateY: [10, 0],
+            delay: stagger(50, { start: 0 }),
+            duration: 500,
+            easing: 'easeOutQuad'
+          });
+        });
+      }
+    });
+  </script>
   </body>
 </html>
