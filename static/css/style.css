@@ -142,6 +142,15 @@ body.light-theme .menu-item a:hover {
     background-color: #495057;
     color: #f8f9fa;
 }
+
+/* Button Hover Effect */
+button {
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
 body.light-theme .theme-toggle label {
     background: #e9ecef;
     color: #343a40;
