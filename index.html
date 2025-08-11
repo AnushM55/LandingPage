@@ -574,6 +574,7 @@ For each protest event, the project records protester demands, government respon
             <ul class="list-view active">
                 <li><a href="/posts/hello-world" data-content="hello-world">hello world <span class="date">2024/08/16</span></a></li>
                 <li><a href="/posts/similarity" data-content="similarity">Similarity <span class="date">2024/10/05</span></a></li>
+                <li><a href="/posts/hp-battery-counterfeit-error" data-content="hp-battery-counterfeit-error">hp-battery-counterfeit-error<span class="date">2025/11/08</span></a></li>
             </ul>
             <div id="hello-world" class="content-view">
                 <h2>hello world</h2>
@@ -603,6 +604,43 @@ Hope our levels of mutual respect align on a way never seen before.</p>
 <p>Hope you and I would be the same one day.</p>
 
             </div>
+            <div id="hp-battery-counterfeit-error" class="content-view">
+                <p><em>2024/08/16</em></p>
+                <p> If you get an error along the lines of "hp battery counterfeit error .." and you own a hp laptop where you have no idea where the battery is, and you have a UEFI based system, you probably have to update your BIOS firmware</p>
+                <br/>
+                <p> FOR A WINDOWS USER you typically already have the utils pre-installed to update device firmware. </p>
+                <p> If you Dual boot with linux and windows u can just go to windows and upgrade your firmware</p>
+                <p> For anyone else , HP doesnt give a fuck and you are on your own.</p>
+              
+                
+                <h1> What i had to do</h1>
+                <br/>
+                
+                - Used <a href="https://github.com/dockur/windows">dockurr/windows</a> to spawn a docker container that runs windows
+                - Looked up their README to set up the <a>shared folder </a>, and the <a>USB device configuration </a>
+                - Downloaded the latest BIOS-System firmware update exe file thingy (idk the the exact name) from <a href="https://support.hp.com/us-en/drivers/laptops"> here</a>
+                  (looked up my device id and product name, selected windows 11 for the OS and the version)
+                - Moved the exe file to the shared folder
+                - Executed the exe file after booting into the windows docker image
+                - I chose to create a bootable usb drive for bios recovery. the tool flashes the usb drive and loads the recovery image which you can boot to up sudo  /usr/sbin/dmidecode | grep "Product Name"grade your BIOS
+                - When the process was over I had to eject the drive, reboot and select the boot from efi option, and select the BiosUpgrade.efi file inside the HP folder entry [ it might vary for you]
+                
+                <p> The BIOS upgrade took a few minutes. When it was over the hp-battery-counterfeit-error did not show up. </p>
+
+                <br/>
+                <h1> Why</h1>
+                  
+                <p> Cause I did not have a windows system / partition in my laptop.<br/> I also did not want to set up a windows VM and already had docker installed.<br/> I tried to execute the exe file using the <a>Hiren boot usb </a> technique but it did not detect my wifi drivers :(</p>
+                <br/>
+                <p> Also the many posts suggesting to extract the bin files from the exe file and move it to the kernel modules folder didn't work for me.<br/> All I got was an another cryptic EFI file that couldn't be decompressed further </p>
+                
+                <br/>
+
+                
+                <h1>The stuff I looked up to get here: </h1>
+                <i>Will be updated shortly</i>     
+                
+           </div>
         </main>
     </div>
 
