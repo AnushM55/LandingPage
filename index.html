@@ -615,16 +615,16 @@ Hope our levels of mutual respect align on a way never seen before.</p>
                 
                 <h1> What i had to do</h1>
                 <br/>
-                
+                <p> Requirements : Docker , A spare USB drive , An internet connection (to set things up initially).</p>
                 <ol>
-                <li> Used <a href="https://github.com/dockur/windows">dockurr/windows</a> to spawn a docker container that runs windows </li>
-                <li> Looked up their README to set up the <a>shared folder </a>, and the <a>USB device configuration </a> </li>
-                <li> Downloaded the latest BIOS-System firmware update exe file thingy (idk the the exact name) from <a href="https://support.hp.com/us-en/drivers/laptops"> here</a>
+                <li> Use <a href="https://github.com/dockur/windows">dockurr/windows</a> to spawn a docker container that runs windows </li>
+                <li> Look up their README to set up the <a href="https://github.com/dockur/windows?tab=readme-ov-file#how-do-i-change-the-storage-location">shared folder </a>, and the <a href="https://github.com/dockur/windows?tab=readme-ov-file#how-do-i-pass-through-a-usb-device">USB device configuration </a> </li>
+                <li> Download the latest BIOS-System firmware update exe file  from <a href="https://support.hp.com/us-en/drivers/laptops"> here</a>
                   (looked up my device id and product name, selected windows 11 for the OS and the version) </li>
-                <li> Moved the exe file to the shared folder </li>
-                <li> Executed the exe file after booting into the windows docker image </li>
-                <li> I chose to create a bootable usb drive for bios recovery. the tool flashes the usb drive and loads the recovery image which you can boot to upgrade your BIOS </li>
-                <li> When the process was over I had to eject the drive, reboot and select the boot from efi option, and select the BiosUpgrade.efi file inside the HP folder entry [ it might vary for you] </li>
+                <li> Move the exe file to the shared folder </li>
+                <li> Execute the exe file after booting into the windows docker image </li>
+                <li> I chose to create a bootable usb drive for bios recovery. The exe tool flashes the usb drive and loads the recovery image which you can boot to upgrade your BIOS </li>
+                <li> When the process was over I had to eject the drive , poweroff , plug the device back in and select the boot from efi option, and then select the BiosUpgrade.efi file inside the HP folder  [ it might vary for you] </li>
                 
                 </ol>
                 <p> The BIOS upgrade took a few minutes. When it was over the hp-battery-counterfeit-error did not show up. </p>
@@ -632,15 +632,19 @@ Hope our levels of mutual respect align on a way never seen before.</p>
                 <br/>
                 <h1> Why</h1>
                   
-                <p> Cause I did not have a windows system / partition in my laptop.<br/> I also did not want to set up a windows VM and already had docker installed.<br/> I tried to execute the exe file using the <a>Hiren boot usb </a> technique but it did not detect my wifi drivers :(</p>
+                <p> Cause I did not have a windows system / partition in my laptop.<br/> I also did not want to set up a windows VM and already had docker installed.<br/> I tried to execute the exe file using the <a href="https://www.hirensbootcd.org/">Hiren boot usb </a> technique but it did not detect my wifi drivers :(</p>
                 <br/>
-                <p> Also the many posts suggesting to extract the bin files from the exe file and move it to the kernel modules folder didn't work for me.<br/> All I got was an another cryptic EFI file that couldn't be decompressed further </p>
+                <p> Also the many posts suggesting to extract the bin files from the exe file and move it to the kernel modules were not helpful for me.<br/> All I got was an another cryptic EFI file </p>
                 
-                <br/>
+            
+                <h1>The stuff I looked up  and didnt work </h1>
+                <i>These may / may not work for you</i>
+              <ol>
+                <li><a href="https://wiki.archlinux.org/title/Flashing_BIOS_from_Linux"></a> Archwiki on flashing BIOS from linux</li>
+                <li><a href="https://askubuntu.com/questions/539120/how-to-perform-a-hp-bios-upgrade-with-only-ubuntu"></a>AskUbuntu thread on performing a BIOS upgrade</li>
+                <li><a href="https://gist.github.com/eNV25/c8001491dc0440656ff7b0ae18993ba1"></a>A gitingest article that goes over the process of modifying the files in the EFI partition </li>
 
-                
-                <h1>The stuff I looked up to get here: </h1>
-                <i>Will be updated shortly</i>     
+          </ol>
                 
            </div>
         </main>
