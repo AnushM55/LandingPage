@@ -13,6 +13,7 @@ dist/
 
 # deps
 node_modules/
+node_modules/*
 .wrangler
 
 # env
@@ -36,3 +37,5 @@ lerna-debug.log*
 !.dev.vars.example
 .env*
 !.env.example
+
+public/
