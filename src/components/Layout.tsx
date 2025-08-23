@@ -11,8 +11,8 @@ interface LayoutProps extends PropsWithChildren {
 
 export const Layout: FC<LayoutProps> = ({ 
   title, 
-  description = 'Anush M - Computer Science undergraduate student portfolio showcasing projects and blog posts',
-  keywords = 'portfolio, computer science, programming, projects, blog',
+  description = 'Anush M - personal website',
+  keywords = 'computer science, programming, projects, blog',
   author = 'Anush M',
   children 
 }) => {

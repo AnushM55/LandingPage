@@ -18,7 +18,6 @@ about.get('/', (c) => {
           <p>I'm an Undergrad student studying at <a href="https://www.cit.edu.in/">CIT</a></p>
           <p>I like tinkering with computers</p>
           <p>Find me at <a href="https://github.com/Anushm55">Github</a> <a href="https://www.linkedin.com/in/anushm55/">LinkedIn</a> <a href="https://mastodon.online/@peepeepoopooo">Mastodon</a> </p>
-          <p>This site is built using <a href="https://html.spec.whatwg.org/">HTML</a>, <a href="https://www.w3.org/TR/css/#css">CSS</a> and <a href="https://tc39.es/ecma262/multipage/#sec-intro">JavaScript</a> </p>
         </div>
       </Content>
     </Layout>
