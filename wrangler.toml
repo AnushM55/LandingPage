@@ -1,4 +1,0 @@
-[build]
-command = "curl -fsSL https://deno.land/x/install/install.sh | sh && /opt/buildhome/.deno/bin/deno task build"
-cwd = "build_cwd"
-watch_dir = "build_watch_dir"
