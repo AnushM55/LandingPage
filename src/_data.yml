@@ -1,15 +1,15 @@
 lang: en
 
 home:
-  welcome: Hello, I am a person that writes stuff.
+  welcome: My Blog
 
 menu_links: []
 extra_head: []
 
 # Metas plugin https://lume.land/plugins/metas/#description
 metas:
-  site: Blog name
-  description: General description of the blog
+  site: anushm55
+  description: A personal blog site
   title: "=title"
   image: "=image"
   twitter: "@username"
