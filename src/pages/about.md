@@ -1,7 +1,7 @@
 ---
 layout: layouts/page.vto
-title: Contact
-url: /contact/
+title: About Me
+url: /about/
 menu:
   visible: true
   order: 2
@@ -13,4 +13,3 @@ menu:
 - My Socials - [Github](https://github.com/Anushm55) [LinkedIn](https://www.linkedin.com/in/anushm55/) [Mastodon](https://mastodon.online/@peepeepoopooo)
 
 - [Send me an e-mail] (mailto:hello@anushm55.com)
-
