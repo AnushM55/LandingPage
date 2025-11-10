@@ -1,12 +1,7 @@
-/**
- * For more details on how to configure Wrangler, refer to:
- * https://developers.cloudflare.com/workers/wrangler/configuration/
- */
 {
-	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "my-hono-app",
+	"name": "landingpage",
 	"compatibility_date": "2025-08-22",
-	"pages_build_output_dir": "./dist",
+	"pages_build_output_dir": "./_site",
 	"observability": {
 		"enabled": true
 	}

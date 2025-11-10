@@ -1,0 +1,16 @@
+lang: en
+
+home:
+  welcome: My Blog
+
+menu_links: []
+extra_head: []
+
+# Metas plugin https://lume.land/plugins/metas/#description
+metas:
+  site: anushm55
+  description: A personal blog site
+  title: "=title"
+  image: "=image"
+  twitter: "@username"
+  lang: en
