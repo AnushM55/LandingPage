@@ -4,7 +4,6 @@ home:
   welcome: My Blog
 
 menu_links: []
-extra_head: []
 
 # Metas plugin https://lume.land/plugins/metas/#description
 metas:

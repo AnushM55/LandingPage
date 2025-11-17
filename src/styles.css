@@ -1,6 +1,31 @@
 /* Lume's design system */
 @import "https://unpkg.com/@lumeland/ds@0.5.2/ds.css";
 
+/* Self-hosted Libre Baskerville */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Custom components */
 @import "css/navbar.css";
 @import "css/page.css";
@@ -8,11 +33,15 @@
 @import "css/post.css";
 @import "css/comments.css";
 
-/* Make the links black */
+/* Theme tokens */
 :root {
   --color-link: var(--color-base);
   --color-link-hover: var(--color-dim);
+  --font-family-ui: "Libre Baskerville", Georgia, serif;
+  --font-family-display: "Libre Baskerville", Georgia, serif;
 }
+
+
 
 /* Page layout */
 main {
@@ -28,4 +57,28 @@ main {
 /* Search tweak */
 .search {
   margin-top: var(--row-gap-xsmall);
+}
+
+@font-face {
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/LibreBaskerville-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/LibreBaskerville-Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/LibreBaskerville-Bold.ttf") format("truetype");
 }
