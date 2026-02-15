@@ -48,19 +48,34 @@ body {
   padding: 0;
 }
 
-/* View Transitions - Keep background static, only transition main content */
+/* View Transitions - Keep background completely static */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
+  mix-blend-mode: normal;
 }
 
+/* Only transition the main content with a lightweight fade */
 main {
   view-transition-name: main-content;
 }
 
-::view-transition-old(main-content),
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+::view-transition-old(main-content) {
+  animation: fade-out 0.15s ease-out;
+}
+
 ::view-transition-new(main-content) {
-  animation-duration: 0.3s;
+  animation: fade-in 0.2s ease-in;
 }
 
 /* Override Lume DS colors */
@@ -141,94 +156,6 @@ a {
 
 a:hover {
   color: var(--color-link-hover);
-}
-
-/* Search tweak */
-.search {
-  margin-top: var(--row-gap-xsmall);
-}
-
-/* Light theme - Search/Pagefind UI */
-.pagefind-ui__search-input {
-  background: rgba(255, 255, 255, 0.9) !important;
-  border: 1px solid var(--color-line) !important;
-  color: var(--color-text-primary) !important;
-}
-
-.pagefind-ui__drawer {
-  background: rgba(240, 248, 255, 0.98) !important;
-  border: 1px solid var(--color-line) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 1rem !important;
-}
-
-.pagefind-ui__results-area {
-  display: flex !important;
-  gap: 1.5rem !important;
-  flex-direction: row !important;
-  align-items: flex-start !important;
-}
-
-.pagefind-ui__results {
-  flex: 1 !important;
-  min-width: 0 !important;
-}
-
-.pagefind-ui__result {
-  background: rgba(255, 255, 255, 0.8) !important;
-  border: 1px solid var(--color-line) !important;
-  padding: 1rem !important;
-  margin-bottom: 1rem !important;
-  border-radius: 6px !important;
-}
-
-.pagefind-ui__result-title {
-  font-size: 1.1rem !important;
-  margin-bottom: 0.5rem !important;
-  color: var(--color-text-primary) !important;
-}
-
-.pagefind-ui__result-excerpt {
-  font-size: 0.9rem !important;
-  line-height: 1.5 !important;
-  color: var(--color-text-secondary) !important;
-}
-
-.pagefind-ui__filter-panel {
-  background: rgba(255, 255, 255, 0.85) !important;
-  border: 1px solid var(--color-line) !important;
-  padding: 1rem !important;
-  border-radius: 6px !important;
-  width: 200px !important;
-  min-width: 200px !important;
-  max-width: 200px !important;
-  flex-shrink: 0 !important;
-}
-
-.pagefind-ui__filter-block {
-  margin-bottom: 0.5rem !important;
-}
-
-.pagefind-ui__filter-name {
-  font-weight: 600 !important;
-  margin-bottom: 0.5rem !important;
-  font-size: 0.95rem !important;
-}
-
-.pagefind-ui__filter-group {
-  margin-bottom: 0.75rem !important;
-}
-
-@media (max-width: 768px) {
-  .pagefind-ui__results-area {
-    flex-direction: column !important;
-  }
-  
-  .pagefind-ui__filter-panel {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
 }
 
 /* Code blocks */
@@ -316,59 +243,6 @@ hr {
 [data-theme="dark"] .badge:hover {
   background: rgba(34, 211, 238, 0.25);
   border-color: var(--color-link);
-}
-
-/* Dark theme - Search/Pagefind UI */
-[data-theme="dark"] .pagefind-ui__search-input {
-  background: rgba(8, 15, 28, 0.9) !important;
-  border: 1px solid var(--color-line) !important;
-  color: var(--color-text-primary) !important;
-}
-
-[data-theme="dark"] .pagefind-ui__search-clear {
-  color: var(--color-text-secondary) !important;
-}
-
-[data-theme="dark"] .pagefind-ui__drawer {
-  background: rgba(8, 15, 28, 0.95) !important;
-  border: 1px solid var(--color-line) !important;
-}
-
-[data-theme="dark"] .pagefind-ui__results-area {
-  background: transparent !important;
-}
-
-[data-theme="dark"] .pagefind-ui__result {
-  background: rgba(8, 15, 28, 0.8) !important;
-  border: 1px solid var(--color-line) !important;
-}
-
-[data-theme="dark"] .pagefind-ui__result-title,
-[data-theme="dark"] .pagefind-ui__result-excerpt,
-[data-theme="dark"] .pagefind-ui__message {
-  color: var(--color-text-primary) !important;
-}
-
-[data-theme="dark"] .pagefind-ui__result-link {
-  color: var(--color-link) !important;
-}
-
-[data-theme="dark"] .pagefind-ui__result-link:hover {
-  color: var(--color-link-hover) !important;
-}
-
-[data-theme="dark"] .pagefind-ui__filter-panel {
-  background: rgba(8, 15, 28, 0.85) !important;
-  border: 1px solid var(--color-line) !important;
-}
-
-[data-theme="dark"] .pagefind-ui__filter-name,
-[data-theme="dark"] .pagefind-ui__filter-value {
-  color: var(--color-text-primary) !important;
-}
-
-[data-theme="dark"] .pagefind-ui__filter-block {
-  border-color: var(--color-line) !important;
 }
 
 @font-face {

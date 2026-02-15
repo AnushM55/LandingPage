@@ -6,7 +6,6 @@ import basePath from "lume/plugins/base_path.ts";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
 import metas from "lume/plugins/metas.ts";
-import pagefind, { Options as PagefindOptions } from "lume/plugins/pagefind.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import feed, { Options as FeedOptions } from "lume/plugins/feed.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
@@ -21,7 +20,6 @@ import "lume/types.ts";
 export interface Options {
   prism?: Partial<PrismOptions>;
   date?: Partial<DateOptions>;
-  pagefind?: Partial<PagefindOptions>;
   feed?: Partial<FeedOptions>;
 }
 
@@ -56,7 +54,6 @@ export default function (userOptions?: Options) {
       .use(resolveUrls())
       .use(slugifyUrls())
       .use(terser())
-      .use(pagefind(options.pagefind))
       .use(sitemap())
       .use(feed(options.feed))
       .add("fonts")
@@ -66,6 +63,7 @@ export default function (userOptions?: Options) {
       .add("uploads")
       .add([".webp"])
       .add([".png"])
+      .copy("_headers")
       .mergeKey("extra_head", "stringArray")
       .preprocess([".md"], (pages) => {
         for (const page of pages) {

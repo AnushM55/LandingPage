@@ -1,4 +1,4 @@
-// View Transitions for smooth navigation without reloading background
+// Lightweight view transitions that keep background static
 function supportsViewTransitions() {
   return 'startViewTransition' in document;
 }
@@ -12,7 +12,6 @@ async function fetchPage(url) {
 
 async function transitionToPage(url) {
   if (!supportsViewTransitions()) {
-    // Fallback: just navigate normally
     window.location.href = url;
     return;
   }
@@ -20,7 +19,7 @@ async function transitionToPage(url) {
   // Fetch the new page
   const newDocument = await fetchPage(url);
   
-  // Use View Transitions API
+  // Use View Transitions API - only transition main content
   const transition = document.startViewTransition(() => {
     // Update the main content
     const oldMain = document.querySelector('main');
@@ -33,56 +32,35 @@ async function transitionToPage(url) {
     // Update title
     document.title = newDocument.title;
     
-    // Update any head elements that might have changed
+    // Update canonical link
     const oldCanonical = document.querySelector('link[rel="canonical"]');
     const newCanonical = newDocument.querySelector('link[rel="canonical"]');
     if (oldCanonical && newCanonical) {
       oldCanonical.href = newCanonical.href;
     }
     
-    // Re-initialize theme toggle after content replacement
+    // Re-initialize theme toggle
     window.updateThemeIcon?.();
   });
 
   await transition.finished;
   
-  // Update URL in browser
+  // Update URL
   window.history.pushState({}, '', url);
   
-  // Reinitialize Pagefind search if present
-  const searchElement = document.querySelector('#search');
-  if (searchElement && window.PagefindUI) {
-    searchElement.innerHTML = ''; // Clear old instance
-    new PagefindUI({
-      element: "#search",
-      showImages: false,
-      excerptLength: 0,
-      showEmptyFilters: true,
-      showSubResults: false,
-      resetStyles: true,
-      bundlePath: "/pagefind/",
-      baseUrl: "/"
-    });
-  }
-  
-  // Reinitialize any event handlers on the new content
+  // Reinitialize event handlers on new content
   initializeLinks();
 }
 
 function initializeLinks() {
-  // Intercept all internal link clicks
+  // Intercept internal link clicks
   document.querySelectorAll('a[href^="/"], a[href^="' + window.location.origin + '"]').forEach(link => {
-    // Skip if already handled
     if (link.dataset.transitionHandled) return;
     
     link.dataset.transitionHandled = 'true';
     
     link.addEventListener('click', (e) => {
-      // Skip if:
-      // - Opening in new tab
-      // - External link
-      // - Download link
-      // - Has target attribute
+      // Skip if opening in new tab or external
       if (
         e.ctrlKey || 
         e.metaKey || 
@@ -122,23 +100,6 @@ window.addEventListener('popstate', async (e) => {
     });
     
     await transition.finished;
-    
-    // Reinitialize Pagefind search if present
-    const searchElement = document.querySelector('#search');
-    if (searchElement && window.PagefindUI) {
-      searchElement.innerHTML = '';
-      new PagefindUI({
-        element: "#search",
-        showImages: false,
-        excerptLength: 0,
-        showEmptyFilters: true,
-        showSubResults: false,
-        resetStyles: true,
-        bundlePath: "/pagefind/",
-        baseUrl: "/"
-      });
-    }
-    
     initializeLinks();
   }
 });
