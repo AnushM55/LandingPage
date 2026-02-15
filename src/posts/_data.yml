@@ -1,5 +1,6 @@
 type: post
 layout: layouts/post.vto
+openGraphLayout: templates/og-image.tsx
 
 metas:
   title: "=title"

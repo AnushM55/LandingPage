@@ -9,6 +9,7 @@ import metas from "lume/plugins/metas.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import feed, { Options as FeedOptions } from "lume/plugins/feed.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
+import ogImages from "lume/plugins/og_images.ts";
 import { merge } from "lume/core/utils/object.ts";
 import toc from "https://deno.land/x/lume_markdown_plugins@v0.11.1/toc.ts";
 import image from "https://deno.land/x/lume_markdown_plugins@v0.11.1/image.ts";
@@ -48,6 +49,7 @@ export default function (userOptions?: Options) {
       .use(prism(options.prism))
       .use(readingInfo())
       .use(date(options.date))
+      .use(ogImages())
       .use(metas())
       .use(image())
       .use(footnotes())

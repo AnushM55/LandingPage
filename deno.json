@@ -4,6 +4,7 @@
     "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@0.14.15/",
     "lume/jsx-runtime": "https://deno.land/x/ssx@v0.1.14/jsx-runtime.ts"
   },
+  "nodeModulesDir": "auto",
   "tasks": {
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
     "build": "deno task lume",

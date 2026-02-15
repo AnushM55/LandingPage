@@ -41,3 +41,10 @@ lerna-debug.log*
 public/
 _site/
 _site/*
+_cache/*
+_cache/
+_cache/.*
+_cache/.*/*
+_cache/.*/*/*
+./_cache/.*/*/*
+./_cache

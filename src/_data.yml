@@ -5,6 +5,9 @@ home:
 
 menu_links: []
 
+# OG Images - applies to all pages
+openGraphLayout: templates/og-image.tsx
+
 # Metas plugin https://lume.land/plugins/metas/#description
 metas:
   site: anushm55
