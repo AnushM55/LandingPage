@@ -64,6 +64,8 @@ export default function (userOptions?: Options) {
       .add("js")
       .add("favicon.png")
       .add("uploads")
+      .add([".webp"])
+      .add([".png"])
       .mergeKey("extra_head", "stringArray")
       .preprocess([".md"], (pages) => {
         for (const page of pages) {

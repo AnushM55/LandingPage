@@ -63,7 +63,7 @@
 
 /* Theme toggle button */
 .theme-toggle.button {
-  background: rgba(200, 200, 180, 0.3);
+  background: rgba(8, 145, 178, 0.2);
   border: 1px solid var(--color-line);
   color: var(--color-text-primary);
   cursor: pointer;
@@ -76,7 +76,7 @@
 }
 
 .theme-toggle.button:hover {
-  background: rgba(200, 200, 180, 0.5);
+  background: rgba(8, 145, 178, 0.35);
   border-color: var(--color-link);
 }
 

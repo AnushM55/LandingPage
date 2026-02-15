@@ -8,16 +8,16 @@
 @import "css/post.css";
 @import "css/comments.css";
 
-/* Theme tokens - Nature theme inspired */
+/* Theme tokens - Night cityscape inspired */
 :root {
-  --color-background: #e8e4d5;
-  --color-surface: rgba(245, 242, 235, 0.95);
-  --color-text-primary: #2d2d2a;
-  --color-text-secondary: #5a5a52;
-  --color-link: #6b8e3f;
-  --color-link-hover: #4a6b2a;
-  --color-accent: #7a9e52;
-  --color-line: rgba(100, 100, 90, 0.2);
+  --color-background: #0f1d36;
+  --color-surface: rgba(240, 248, 255, 0.95);
+  --color-text-primary: #0a1628;
+  --color-text-secondary: #2d4a6f;
+  --color-link: #0891b2;
+  --color-link-hover: #06b6d4;
+  --color-accent: #0891b2;
+  --color-line: rgba(8, 145, 178, 0.3);
   
   --font-family-ui: "Libre Baskerville", Georgia, serif;
   --font-family-display: "Libre Baskerville", Georgia, serif;
@@ -30,7 +30,7 @@
 html {
   height: 100%;
   background: var(--color-background);
-  background-image: url('https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=2000');
+  background-image: url('/background.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -48,6 +48,21 @@ body {
   padding: 0;
 }
 
+/* View Transitions - Keep background static, only transition main content */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+main {
+  view-transition-name: main-content;
+}
+
+::view-transition-old(main-content),
+::view-transition-new(main-content) {
+  animation-duration: 0.3s;
+}
+
 /* Override Lume DS colors */
 html {
   --color-base: var(--color-text-primary);
@@ -63,8 +78,9 @@ main {
   background: var(--color-surface);
   border-radius: 12px;
   padding: 3rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(8, 145, 178, 0.2);
 }
 
 main > .page-header:first-of-type {
@@ -134,13 +150,13 @@ a:hover {
 
 /* Light theme - Search/Pagefind UI */
 .pagefind-ui__search-input {
-  background: rgba(255, 252, 245, 0.8) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
   border: 1px solid var(--color-line) !important;
   color: var(--color-text-primary) !important;
 }
 
 .pagefind-ui__drawer {
-  background: rgba(245, 242, 235, 0.98) !important;
+  background: rgba(240, 248, 255, 0.98) !important;
   border: 1px solid var(--color-line) !important;
   display: flex !important;
   flex-direction: column !important;
@@ -160,7 +176,7 @@ a:hover {
 }
 
 .pagefind-ui__result {
-  background: rgba(255, 252, 245, 0.5) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
   border: 1px solid var(--color-line) !important;
   padding: 1rem !important;
   margin-bottom: 1rem !important;
@@ -170,15 +186,17 @@ a:hover {
 .pagefind-ui__result-title {
   font-size: 1.1rem !important;
   margin-bottom: 0.5rem !important;
+  color: var(--color-text-primary) !important;
 }
 
 .pagefind-ui__result-excerpt {
   font-size: 0.9rem !important;
   line-height: 1.5 !important;
+  color: var(--color-text-secondary) !important;
 }
 
 .pagefind-ui__filter-panel {
-  background: rgba(255, 252, 245, 0.6) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
   border: 1px solid var(--color-line) !important;
   padding: 1rem !important;
   border-radius: 6px !important;
@@ -215,12 +233,12 @@ a:hover {
 
 /* Code blocks */
 pre, code {
-  background: rgba(100, 100, 90, 0.15);
+  background: rgba(8, 145, 178, 0.1);
   border: 1px solid var(--color-line);
 }
 
 code {
-  color: #4a6b2a;
+  color: #0369a1;
 }
 
 /* Headings */
@@ -234,47 +252,75 @@ hr {
   opacity: 0.5;
 }
 
+/* Badges and tags */
+.badge {
+  background: rgba(8, 145, 178, 0.15);
+  border: 1px solid var(--color-line);
+  color: var(--color-text-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.badge:hover {
+  background: rgba(8, 145, 178, 0.25);
+  border-color: var(--color-link);
+  color: var(--color-link-hover);
+}
+
 /* Dark theme */
 [data-theme="dark"] {
-  --color-background: #1a1a1a;
-  --color-surface: rgba(40, 40, 35, 0.95);
-  --color-text-primary: #e8e6d9;
-  --color-text-secondary: #c4c2b5;
-  --color-link: #9db86d;
-  --color-link-hover: #b8d481;
-  --color-accent: #7a9e52;
-  --color-line: rgba(200, 200, 190, 0.2);
+  --color-background: #0a0e1a;
+  --color-surface: rgba(8, 15, 28, 0.75);
+  --color-text-primary: #e0f2fe;
+  --color-text-secondary: #94a3b8;
+  --color-link: #22d3ee;
+  --color-link-hover: #67e8f9;
+  --color-accent: #22d3ee;
+  --color-line: rgba(34, 211, 238, 0.2);
 }
 
 [data-theme="dark"] html {
-  background: #0d0d0d;
+  background: #05080f;
 }
 
 [data-theme="dark"] pre,
 [data-theme="dark"] code {
-  background: rgba(0, 0, 0, 0.5);
-  color: #a8d08d;
+  background: rgba(34, 211, 238, 0.1);
+  color: #67e8f9;
 }
 
 [data-theme="dark"] .comments {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(8, 15, 28, 0.6);
 }
 
 [data-theme="dark"] .navbar-inline {
-  border-bottom-color: rgba(200, 200, 190, 0.15);
+  border-bottom-color: rgba(34, 211, 238, 0.2);
 }
 
 [data-theme="dark"] .theme-toggle.button {
-  background: rgba(200, 200, 180, 0.2);
+  background: rgba(34, 211, 238, 0.15);
 }
 
 [data-theme="dark"] .theme-toggle.button:hover {
-  background: rgba(200, 200, 180, 0.35);
+  background: rgba(34, 211, 238, 0.25);
+}
+
+[data-theme="dark"] .badge {
+  background: rgba(34, 211, 238, 0.15);
+  border-color: var(--color-line);
+}
+
+[data-theme="dark"] .badge:hover {
+  background: rgba(34, 211, 238, 0.25);
+  border-color: var(--color-link);
 }
 
 /* Dark theme - Search/Pagefind UI */
 [data-theme="dark"] .pagefind-ui__search-input {
-  background: rgba(0, 0, 0, 0.4) !important;
+  background: rgba(8, 15, 28, 0.9) !important;
   border: 1px solid var(--color-line) !important;
   color: var(--color-text-primary) !important;
 }
@@ -284,7 +330,7 @@ hr {
 }
 
 [data-theme="dark"] .pagefind-ui__drawer {
-  background: rgba(40, 40, 35, 0.95) !important;
+  background: rgba(8, 15, 28, 0.95) !important;
   border: 1px solid var(--color-line) !important;
 }
 
@@ -293,7 +339,7 @@ hr {
 }
 
 [data-theme="dark"] .pagefind-ui__result {
-  background: rgba(0, 0, 0, 0.3) !important;
+  background: rgba(8, 15, 28, 0.8) !important;
   border: 1px solid var(--color-line) !important;
 }
 
@@ -312,7 +358,7 @@ hr {
 }
 
 [data-theme="dark"] .pagefind-ui__filter-panel {
-  background: rgba(0, 0, 0, 0.4) !important;
+  background: rgba(8, 15, 28, 0.85) !important;
   border: 1px solid var(--color-line) !important;
 }
 

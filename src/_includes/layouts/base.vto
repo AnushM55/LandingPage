@@ -4,11 +4,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
     <title>{{ it.title || metas.title }} - {{ metas.site }}</title>
 
     <meta name="supported-color-schemes" content="light dark">
-    <meta name="theme-color" content="hsl(220, 20%, 100%)" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="hsl(220, 20%, 10%)" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="hsl(200, 95%, 95%)" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="hsl(210, 50%, 8%)" media="(prefers-color-scheme: dark)">
     
     <link rel="stylesheet" href="/styles.css">
     <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ metas.site }}">
@@ -16,6 +17,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link rel="canonical" href="{{ url |> url(true) }}">
     <script src="/js/main.js" type="module"></script>
+    <script src="/js/view-transitions.js" type="module"></script>
     {{ it.extra_head?.join("\n") }}
   </head>
   <body>
@@ -25,25 +27,25 @@
         : "light");
       document.documentElement.dataset.theme = theme;
       
-      function updateThemeIcon() {
+      window.updateThemeIcon = function() {
         const icon = document.querySelector('.theme-toggle .icon');
         if (icon) {
           icon.textContent = theme === "dark" ? "☀" : "🌙";
         }
       }
       
-      function changeTheme() {
+      window.changeTheme = function() {
         theme = theme === "dark" ? "light" : "dark";
         localStorage.setItem("theme", theme);
         document.documentElement.dataset.theme = theme;
-        updateThemeIcon();
+        window.updateThemeIcon();
       }
       
       // Update icon when DOM is ready
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', updateThemeIcon);
+        document.addEventListener('DOMContentLoaded', window.updateThemeIcon);
       } else {
-        updateThemeIcon();
+        window.updateThemeIcon();
       }
     </script>
 
@@ -74,7 +76,7 @@
             </li>
           {{ /for }}
           </ul>
-          <button class="button theme-toggle" onclick="changeTheme()" title="Toggle theme">
+          <button class="button theme-toggle" onclick="window.changeTheme()" title="Toggle theme">
             <span class="icon">🌙</span>
           </button>
         </div>
