@@ -6,11 +6,11 @@
     font: var(--font-title);
     letter-spacing: var(--font-title-spacing);
     margin: 0;
-    color: var(--color-base);
+    color: var(--color-text-primary);
   }
   & p {
     font: var(--font-ui);
-    color: var(--color-dim);
+    color: var(--color-text-secondary);
     margin: 0.5em 0;
   }
 }
@@ -18,10 +18,10 @@
   display: block;
   padding: 2em;
   margin-top: 2em;
-  background: var(--color-highlight);
-  border-radius: var(--border-radius);
+  background: rgba(255, 252, 245, 0.5);
+  border-radius: 8px;
   border: solid 1px var(--color-line);
-  color: var(--color-dim);
+  color: var(--color-text-secondary);
   font: var(--font-small);
 
   @media (max-width: 450px) {

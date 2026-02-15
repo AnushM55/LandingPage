@@ -12,6 +12,7 @@
   margin: 0;
   text-wrap: balance;
   color: var(--color-base);
+  word-break: break-word;
 }
 
 .page-navigation {
@@ -36,4 +37,10 @@
 .page-pagination {
   border-top: solid 1px var(--color-line);
   margin-top: var(--row-gap-medium);
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
 }

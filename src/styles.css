@@ -8,10 +8,17 @@
 @import "css/post.css";
 @import "css/comments.css";
 
-/* Theme tokens */
+/* Theme tokens - Nature theme inspired */
 :root {
-  --color-link: var(--color-base);
-  --color-link-hover: var(--color-dim);
+  --color-background: #e8e4d5;
+  --color-surface: rgba(245, 242, 235, 0.95);
+  --color-text-primary: #2d2d2a;
+  --color-text-secondary: #5a5a52;
+  --color-link: #6b8e3f;
+  --color-link-hover: #4a6b2a;
+  --color-accent: #7a9e52;
+  --color-line: rgba(100, 100, 90, 0.2);
+  
   --font-family-ui: "Libre Baskerville", Georgia, serif;
   --font-family-display: "Libre Baskerville", Georgia, serif;
   --font-body: clamp(1rem, 5vw, 1.125rem) / 2.5 var(--font-family-ui);
@@ -19,22 +26,303 @@
   --font-small: clamp(0.85rem, 4vw, 0.9rem) / 1.7 var(--font-family-ui);
 }
 
+/* Nature background theme */
+html {
+  height: 100%;
+  background: var(--color-background);
+  background-image: url('https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=2000');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
 
+body {
+  min-height: 100%;
+  color: var(--color-text-primary);
+  position: relative;
+  background: transparent;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Override Lume DS colors */
+html {
+  --color-base: var(--color-text-primary);
+  --color-dim: var(--color-text-secondary);
+  --color-primary: var(--color-accent);
+  --color-highlight: var(--color-surface);
+}
 
 /* Page layout */
 main {
-  padding: var(--row-gap-medium) 0;
   max-width: min(100% - 15vw, 45em);
-  margin: 0 auto;
+  margin: 2rem auto;
+  background: var(--color-surface);
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+}
 
-  & > :first-child {
-    margin-top: 0;
+main > .page-header:first-of-type {
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  main {
+    margin: 0;
+    border-radius: 0;
+    padding: 2rem 1.5rem;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
+  
+  .navbar-inline {
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .navbar-home {
+    font-size: 1rem;
+  }
+  
+  .navbar-right {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 1.5rem 1rem;
+  }
+  
+  .navbar-inline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .navbar-right {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  .navbar-links {
+    column-gap: 1rem;
+  }
+}
+
+/* Links styling */
+a {
+  color: var(--color-link);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-link-hover);
 }
 
 /* Search tweak */
 .search {
   margin-top: var(--row-gap-xsmall);
+}
+
+/* Light theme - Search/Pagefind UI */
+.pagefind-ui__search-input {
+  background: rgba(255, 252, 245, 0.8) !important;
+  border: 1px solid var(--color-line) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.pagefind-ui__drawer {
+  background: rgba(245, 242, 235, 0.98) !important;
+  border: 1px solid var(--color-line) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+.pagefind-ui__results-area {
+  display: flex !important;
+  gap: 1.5rem !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+}
+
+.pagefind-ui__results {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.pagefind-ui__result {
+  background: rgba(255, 252, 245, 0.5) !important;
+  border: 1px solid var(--color-line) !important;
+  padding: 1rem !important;
+  margin-bottom: 1rem !important;
+  border-radius: 6px !important;
+}
+
+.pagefind-ui__result-title {
+  font-size: 1.1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.pagefind-ui__result-excerpt {
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+}
+
+.pagefind-ui__filter-panel {
+  background: rgba(255, 252, 245, 0.6) !important;
+  border: 1px solid var(--color-line) !important;
+  padding: 1rem !important;
+  border-radius: 6px !important;
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
+  flex-shrink: 0 !important;
+}
+
+.pagefind-ui__filter-block {
+  margin-bottom: 0.5rem !important;
+}
+
+.pagefind-ui__filter-name {
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 0.95rem !important;
+}
+
+.pagefind-ui__filter-group {
+  margin-bottom: 0.75rem !important;
+}
+
+@media (max-width: 768px) {
+  .pagefind-ui__results-area {
+    flex-direction: column !important;
+  }
+  
+  .pagefind-ui__filter-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Code blocks */
+pre, code {
+  background: rgba(100, 100, 90, 0.15);
+  border: 1px solid var(--color-line);
+}
+
+code {
+  color: #4a6b2a;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-primary);
+}
+
+/* HR separator */
+hr {
+  border-color: var(--color-line);
+  opacity: 0.5;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --color-background: #1a1a1a;
+  --color-surface: rgba(40, 40, 35, 0.95);
+  --color-text-primary: #e8e6d9;
+  --color-text-secondary: #c4c2b5;
+  --color-link: #9db86d;
+  --color-link-hover: #b8d481;
+  --color-accent: #7a9e52;
+  --color-line: rgba(200, 200, 190, 0.2);
+}
+
+[data-theme="dark"] html {
+  background: #0d0d0d;
+}
+
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
+  background: rgba(0, 0, 0, 0.5);
+  color: #a8d08d;
+}
+
+[data-theme="dark"] .comments {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .navbar-inline {
+  border-bottom-color: rgba(200, 200, 190, 0.15);
+}
+
+[data-theme="dark"] .theme-toggle.button {
+  background: rgba(200, 200, 180, 0.2);
+}
+
+[data-theme="dark"] .theme-toggle.button:hover {
+  background: rgba(200, 200, 180, 0.35);
+}
+
+/* Dark theme - Search/Pagefind UI */
+[data-theme="dark"] .pagefind-ui__search-input {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid var(--color-line) !important;
+  color: var(--color-text-primary) !important;
+}
+
+[data-theme="dark"] .pagefind-ui__search-clear {
+  color: var(--color-text-secondary) !important;
+}
+
+[data-theme="dark"] .pagefind-ui__drawer {
+  background: rgba(40, 40, 35, 0.95) !important;
+  border: 1px solid var(--color-line) !important;
+}
+
+[data-theme="dark"] .pagefind-ui__results-area {
+  background: transparent !important;
+}
+
+[data-theme="dark"] .pagefind-ui__result {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid var(--color-line) !important;
+}
+
+[data-theme="dark"] .pagefind-ui__result-title,
+[data-theme="dark"] .pagefind-ui__result-excerpt,
+[data-theme="dark"] .pagefind-ui__message {
+  color: var(--color-text-primary) !important;
+}
+
+[data-theme="dark"] .pagefind-ui__result-link {
+  color: var(--color-link) !important;
+}
+
+[data-theme="dark"] .pagefind-ui__result-link:hover {
+  color: var(--color-link-hover) !important;
+}
+
+[data-theme="dark"] .pagefind-ui__filter-panel {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid var(--color-line) !important;
+}
+
+[data-theme="dark"] .pagefind-ui__filter-name,
+[data-theme="dark"] .pagefind-ui__filter-value {
+  color: var(--color-text-primary) !important;
+}
+
+[data-theme="dark"] .pagefind-ui__filter-block {
+  border-color: var(--color-line) !important;
 }
 
 @font-face {

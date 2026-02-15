@@ -19,50 +19,67 @@
     {{ it.extra_head?.join("\n") }}
   </head>
   <body>
-    <nav class="navbar">
-      <a href="/" class="navbar-home">
-        {{ if it.logo }}
-          {{ it.logo }}
-        {{ else }}
-          <strong>{{ metas.site }}</strong>
-        {{ /if }}
-      </a>
-
-      <ul class="navbar-links">
-      {{- for entry of search.pages("menu.visible=true", "menu.order") }}
-        <li>
-          <a href="{{ entry.url }}"{{ if entry.url == url }} aria-current="page"{{ /if }}>
-            {{ entry.menu.title || entry.title }}
-          </a>
-        </li>
-      {{ /for }}
-      {{- for link of it.menu_links }}
-        <li>
-          <a href="{{ link.href }}"{{ if link.target }} target="{{link.target}}"{{ /if }}>
-            {{ link.text }}
-          </a>
-        </li>
-      {{ /for }}
-      <li>
-        <script>
-          let theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light");
-          document.documentElement.dataset.theme = theme;
-          function changeTheme() {
-            theme = theme === "dark" ? "light" : "dark";
-            localStorage.setItem("theme", theme);
-            document.documentElement.dataset.theme = theme;
-          }
-        </script>
-        <button class="button" onclick="changeTheme()">
-          <span class="icon">◐</span>
-        </button>
-      </li>
-      </ul>
-    </nav>
+    <script>
+      let theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light");
+      document.documentElement.dataset.theme = theme;
+      
+      function updateThemeIcon() {
+        const icon = document.querySelector('.theme-toggle .icon');
+        if (icon) {
+          icon.textContent = theme === "dark" ? "☀" : "🌙";
+        }
+      }
+      
+      function changeTheme() {
+        theme = theme === "dark" ? "light" : "dark";
+        localStorage.setItem("theme", theme);
+        document.documentElement.dataset.theme = theme;
+        updateThemeIcon();
+      }
+      
+      // Update icon when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateThemeIcon);
+      } else {
+        updateThemeIcon();
+      }
+    </script>
 
     <main class="{{ it.bodyClass }}">
+      <nav class="navbar-inline">
+        <a href="/" class="navbar-home">
+          {{ if it.logo }}
+            {{ it.logo }}
+          {{ else }}
+            <strong>{{ metas.site }}</strong>
+          {{ /if }}
+        </a>
+
+        <div class="navbar-right">
+          <ul class="navbar-links">
+          {{- for entry of search.pages("menu.visible=true", "menu.order") }}
+            <li>
+              <a href="{{ entry.url }}"{{ if entry.url == url }} aria-current="page"{{ /if }}>
+                {{ entry.menu.title || entry.title }}
+              </a>
+            </li>
+          {{ /for }}
+          {{- for link of it.menu_links }}
+            <li>
+              <a href="{{ link.href }}"{{ if link.target }} target="{{link.target}}"{{ /if }}>
+                {{ link.text }}
+              </a>
+            </li>
+          {{ /for }}
+          </ul>
+          <button class="button theme-toggle" onclick="changeTheme()" title="Toggle theme">
+            <span class="icon">🌙</span>
+          </button>
+        </div>
+      </nav>
+
       {{ content }}
     </main>
 
