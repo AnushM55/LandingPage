@@ -4,7 +4,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="view-transition" content="same-origin">
     <title>{{ it.title || metas.title }} - {{ metas.site }}</title>
 
     <meta name="supported-color-schemes" content="light dark">
@@ -18,7 +17,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link rel="canonical" href="{{ url |> url(true) }}">
     <script src="/js/main.js" type="module"></script>
-    <script src="/js/view-transitions.js" type="module"></script>
     {{ it.extra_head?.join("\n") }}
   </head>
   <body>
@@ -26,14 +24,6 @@
       let theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light");
-      document.documentElement.dataset.theme = theme;
-      
-      window.updateThemeIcon = function() {
-        const icon = document.querySelector('.theme-toggle .icon');
-        if (icon) {
-          icon.textContent = theme === "dark" ? "☀" : "🌙";
-        }
-      }
       
       window.changeTheme = function() {
         theme = theme === "dark" ? "light" : "dark";
