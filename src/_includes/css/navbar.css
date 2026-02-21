@@ -59,24 +59,6 @@
   color: var(--color-link-hover);
 }
 
-/* Theme toggle button */
-.theme-toggle.button {
-  background: rgba(8, 145, 178, 0.2);
-  border: 1px solid var(--color-line);
-  color: var(--color-text-primary);
-  cursor: pointer;
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-toggle.button:hover {
-  background: rgba(8, 145, 178, 0.35);
-  border-color: var(--color-link);
-}
-
 @media (max-width: 768px) {
   .navbar-inline {
     padding: 0;

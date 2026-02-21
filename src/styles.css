@@ -148,54 +148,6 @@ hr {
   opacity: 0.5;
 }
 
-/* Dark theme */
-[data-theme="dark"] {
-  --color-background: #0a0e1a;
-  --color-surface: rgba(8, 15, 28, 0.75);
-  --color-text-primary: #e0f2fe;
-  --color-text-secondary: #94a3b8;
-  --color-link: #22d3ee;
-  --color-link-hover: #67e8f9;
-  --color-accent: #22d3ee;
-  --color-line: rgba(34, 211, 238, 0.2);
-}
-
-[data-theme="dark"] html {
-  background: #05080f;
-}
-
-[data-theme="dark"] pre,
-[data-theme="dark"] code {
-  background: rgba(34, 211, 238, 0.1);
-  color: #67e8f9;
-}
-
-[data-theme="dark"] .comments {
-  background: rgba(8, 15, 28, 0.6);
-}
-
-[data-theme="dark"] .navbar-inline {
-  border-bottom-color: rgba(34, 211, 238, 0.2);
-}
-
-[data-theme="dark"] .theme-toggle.button {
-  background: rgba(34, 211, 238, 0.15);
-}
-
-[data-theme="dark"] .theme-toggle.button:hover {
-  background: rgba(34, 211, 238, 0.25);
-}
-
-[data-theme="dark"] .badge {
-  background: rgba(34, 211, 238, 0.15);
-  border-color: var(--color-line);
-}
-
-[data-theme="dark"] .badge:hover {
-  background: rgba(34, 211, 238, 0.25);
-  border-color: var(--color-link);
-}
-
 @font-face {
   font-family: "Libre Baskerville";
   font-style: normal;
